@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+    "multi_flipper",
+]
+
+# Needed until https://github.com/paritytech/ink/issues/364 is resolved.
+[profile.release]
+overflow-checks = false
+[profile.dev]
+overflow-checks = false
