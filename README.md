@@ -12,7 +12,7 @@ submodules, with decreasing level of coupling with the main contract and other m
 macros in minimal ways in each context. No further macro magic is used, to keep the code easy to follow for developers
 and IDEs.
 
-The recommended codebase structure is as follows:
+## Recommended Codebase Structure
 
 - `lib.rs` - This is the entry point of the contract. It defines all public messages and events.
 
@@ -49,8 +49,17 @@ For a real-world example, see [Cere DDC smart contracts](https://github.com/Cere
     #apt-get install binaryen
     #brew install binaryen
 
-### Test
+    # Install the documentation generator
+    git clone https://github.com/Cerebellum-Network/ink-doc-gen.git
+    (cd ink-doc-gen && git checkout v0.1.0 && yarn)
 
+## Test
+
+    # Fast test off-chain
     cargo test
 
-    cargo contract build --release
+    # Compile in on-chain mode
+    (cd multi_flipper && cargo contract build --release)
+
+    # Generate the documentation
+    ABI_PATH=target/ink/multi_flipper/metadata.json  node ink-doc-gen
